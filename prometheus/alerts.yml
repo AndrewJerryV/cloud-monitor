@@ -1,0 +1,103 @@
+groups:
+  - name: infrastructure
+    interval: 30s
+    rules:
+      - alert: HighCPUUsage
+        expr: system_cpu_usage_percent > 80
+        for: 1m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "CPU usage is above 80%"
+          description: "CPU usage is at {{ $value }}% which exceeds the 80% threshold"
+
+      - alert: CriticalCPUUsage
+        expr: system_cpu_usage_percent > 90
+        for: 30s
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical CPU usage detected"
+          description: "CPU usage is at {{ $value }}% - immediate action required"
+
+      - alert: HighMemoryUsage
+        expr: system_memory_usage_percent > 80
+        for: 2m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "Memory usage is above 80%"
+          description: "Memory usage is at {{ $value }}% which exceeds the 80% threshold"
+
+      - alert: CriticalMemoryUsage
+        expr: system_memory_usage_percent > 90
+        for: 1m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical memory usage detected"
+          description: "Memory usage is at {{ $value }}% - immediate action required"
+
+      - alert: HighDiskUsage
+        expr: system_disk_usage_percent > 90
+        for: 2m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "Disk usage is above 90%"
+          description: "Disk {{ $labels.mount }} is at {{ $value }}% capacity"
+
+      - alert: CriticalDiskUsage
+        expr: system_disk_usage_percent > 95
+        for: 1m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical disk usage detected"
+          description: "Disk {{ $labels.mount }} is at {{ $value }}% - immediate action required"
+
+      - alert: ServiceDown
+        expr: up == 0
+        for: 30s
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "Service {{ $labels.job }} has been unreachable for more than 30 seconds"
+
+      - alert: HostUnreachable
+        expr: up{job="node"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Host is unreachable"
+          description: "Node exporter has been unreachable for more than 1 minute"
+
+      - alert: HighNetworkTraffic
+        expr: rate(system_network_receive_bytes[5m]) > 1e9
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "High network traffic detected"
+          description: "Network receive rate is {{ $value | humanize }}B/s on {{ $labels.interface }}"
+
+      - alert: LowDiskSpace
+        expr: system_disk_free_bytes < 1073741824
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "Low disk space"
+          description: "Disk {{ $labels.mount }} has less than 1GB free space"

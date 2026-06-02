@@ -1,0 +1,12 @@
+node_modules/
+build/
+.env
+*.log
+automation/logs/*
+automation/reports/*
+!automation/logs/.gitkeep
+!automation/reports/.gitkeep
+__pycache__/
+*.pyc
+data/
+.DS_Store
