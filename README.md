@@ -280,18 +280,6 @@ Automated remediation engine that continuously monitors system health and takes 
 ### 🤖 Automated Remediation
 Python-based remediation engine running in daemon mode with configurable check intervals (default 30 seconds). The engine performs health checks, evaluates metrics against thresholds, and triggers appropriate remediation actions. Integration with the backend API enables alert creation, incident tracking, and report generation. All remediation actions are recorded with timestamps and outcomes for auditing.
 
-## Screenshots
-
-> Dashboard screenshots would be placed here in a production-ready repository.
-> 
-> Key screenshots to include:
-> 1. Main Dashboard - CPU, Memory, Disk, Network overview
-> 2. Grafana Dashboard - Professional infrastructure monitoring
-> 3. Alerts Page - Alert management with acknowledgment
-> 4. Incidents Page - Incident tracking and resolution
-> 5. System Health - Service status monitoring
-> 6. Remediation - Automated actions and history
-
 ## Configuration
 
 ### Threshold Configuration
