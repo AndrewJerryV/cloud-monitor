@@ -308,31 +308,6 @@ Alert routing is configured in `alertmanager/alertmanager.yml`:
 - `repeat_interval`: Interval for re-sending resolved alerts
 - `receivers`: Notification channels (webhook, Slack, email)
 
-## Troubleshooting
-
-### Common Issues
-
-**Containers fail to start**
-```bash
-docker compose logs <service-name>
-docker compose down && docker compose up -d
-```
-
-**Metrics not appearing in Grafana**
-- Verify Prometheus targets: http://localhost:9090/targets
-- Check datasource configuration in Grafana
-- Ensure backend container is exposing /metrics endpoint
-
-**Alerts not firing**
-- Check Alertmanager: http://localhost:9093/#/alerts
-- Verify alert rules in Prometheus: http://localhost:9090/rules
-- Check alert labels match routing configuration
-
-**Frontend not connecting to backend**
-- Verify API_URL environment variable
-- Check Nginx proxy configuration
-- Ensure backend container is healthy: http://localhost:5000/api/health
-
 ## License
 
 This project is for educational and demonstration purposes.
