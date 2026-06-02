@@ -337,12 +337,4 @@ docker compose down && docker compose up -d
 
 This project is for educational and demonstration purposes.
 
-## Acknowledgments
 
-Built as a portfolio project demonstrating proficiency in:
-- Site Reliability Engineering (SRE)
-- Cloud Infrastructure Monitoring
-- Incident Response & Management
-- DevOps & Automation
-- Container Orchestration
-- Full-Stack Development
