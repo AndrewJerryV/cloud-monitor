@@ -30,7 +30,7 @@ A production-style cloud infrastructure monitoring platform with automated incid
 
 ## Features
 
-### 🔍 Infrastructure Monitoring
+### Infrastructure Monitoring
 - **CPU Monitoring**: Real-time CPU utilization tracking with historical trends
 - **Memory Monitoring**: RAM usage analysis with alerts at configurable thresholds
 - **Disk Monitoring**: Storage utilization per mount point with automatic cleanup triggers
@@ -39,7 +39,7 @@ A production-style cloud infrastructure monitoring platform with automated incid
 - **Prometheus Integration**: All metrics exposed via Prometheus endpoints
 - **Node Exporter**: Linux system metrics collection
 
-### 📊 Grafana Dashboards
+### Grafana Dashboards
 - CPU utilization gauges and time-series charts
 - Memory consumption visualization
 - Disk usage per mount point
@@ -48,7 +48,7 @@ A production-style cloud infrastructure monitoring platform with automated incid
 - System uptime statistics
 - Historical trend analysis (1h, 6h, 24h, 7d)
 
-### 🚨 Alerting System (Alertmanager)
+### Alerting System (Alertmanager)
 | Alert Rule | Threshold | Severity | Response Time |
 |-----------|-----------|----------|---------------|
 | CPU Usage | > 80% | Warning | 1 minute |
@@ -62,7 +62,7 @@ A production-style cloud infrastructure monitoring platform with automated incid
 | High Network Traffic | > 1 GB/s | Warning | 5 minutes |
 | Low Disk Space | < 1 GB free | Warning | 5 minutes |
 
-### 🤖 Automated Incident Response
+### Automated Incident Response
 - **Service Auto-Restart**: Automatically restarts failed services when detected
 - **Log Cleanup**: Removes log files older than configurable retention period
 - **Incident Reports**: Generates detailed JSON incident reports with recommendations
@@ -70,7 +70,7 @@ A production-style cloud infrastructure monitoring platform with automated incid
 - **Threshold-Based Triggers**: Automated actions triggered by configurable metric thresholds
 - **Daemon Mode**: Continuous monitoring with configurable check intervals
 
-### 🖥️ Incident Dashboard
+### Incident Dashboard
 - Real-time system status overview
 - Active incident tracking with severity levels
 - Alert history with acknowledgment workflow
@@ -262,22 +262,22 @@ python -m scripts.remediation_engine --mode daemon --interval 30
 
 ## Resume-Oriented Features
 
-### 🔭 Observability
+### Observability
 Implementation of a complete observability stack using the three pillars: metrics (Prometheus), visualization (Grafana), and alerting (Alertmanager). System metrics are collected at 10-15 second intervals and stored for historical analysis. Custom Prometheus metrics are exposed via a Node.js backend using the prom-client library, providing real-time visibility into CPU, memory, disk, network, and uptime metrics.
 
-### 📈 Monitoring
+### Monitoring
 Comprehensive infrastructure monitoring covering all critical system resources. The platform monitors CPU utilization (per-core and aggregate), memory consumption (with breakdown), disk usage (per mount point with I/O metrics), network traffic (RX/TX by interface), and system availability. All metrics are collected via Node Exporter for Linux system metrics and custom application metrics from the backend service.
 
-### ⚡ Alerting
+### Alerting
 Multi-tier alerting system with configurable thresholds and severity levels. Alertmanager handles alert deduplication, grouping, and routing based on severity (warning/critical). Critical alerts have shorter evaluation windows and repeat intervals (30 minutes) compared to warnings (2 hours). Inhibition rules prevent warning alerts when critical alerts for the same metric are firing.
 
-### 🛡️ Incident Management
+### Incident Management
 Full incident lifecycle management including creation, acknowledgment, and resolution workflows. Incidents track severity (critical/high/medium/low), affected services, timestamps, remediation actions, and resolution status. The incident dashboard provides real-time visibility into open incidents with filtering and search capabilities.
 
-### 🔧 Reliability Engineering
+### Reliability Engineering
 Automated remediation engine that continuously monitors system health and takes corrective actions. Service auto-restart detects when services become unresponsive and restarts them automatically. Log cleanup prevents disk-full scenarios by removing files older than the configurable retention period. All actions are logged and recorded for post-mortem analysis.
 
-### 🤖 Automated Remediation
+### Automated Remediation
 Python-based remediation engine running in daemon mode with configurable check intervals (default 30 seconds). The engine performs health checks, evaluates metrics against thresholds, and triggers appropriate remediation actions. Integration with the backend API enables alert creation, incident tracking, and report generation. All remediation actions are recorded with timestamps and outcomes for auditing.
 
 ## Configuration
